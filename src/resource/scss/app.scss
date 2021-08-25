@@ -1,7 +1,4 @@
 @import 'root';
-h1{
-    color: $red-color;
-}
 * {
     padding: 0;
     margin: 0;
@@ -123,6 +120,8 @@ h1{
 .nav-item:hover a {
     color: var(--bg-color);
 }
+
+
 /* style menu sub */
 
 .nav-item:hover .item-small {
@@ -196,6 +195,8 @@ h1{
 .item-small-child li:hover a {
     color: #fff !important;
 }
+
+
 /* end  */
 
 .cartsearch {
@@ -284,7 +285,8 @@ h1{
     top: 0;
     z-index: -1;
 }
-.bg-department-item img{
+
+.bg-department-item img {
     max-width: 100%;
 }
 
@@ -376,6 +378,8 @@ h1{
     float: right;
     line-height: 40px;
 }
+
+
 /* start button */
 
 .bnt-order-now a {
@@ -430,6 +434,8 @@ h1{
     width: 100%;
     transition: 800ms ease all;
 }
+
+
 /* end */
 
 .box-generality {
@@ -513,7 +519,7 @@ h1{
     font-family: JosefinSans;
 }
 
-.services-main img{
+.services-main img {
     width: 100%;
 }
 
@@ -644,19 +650,56 @@ h1{
     margin: auto;
 }
 
+// ------------------ style intro page
+.title-intro {
+    background-image: url(/img/bg_bread_crumb.jpg);
+    padding: 100px 0;
+}
+
+.title-intro h1 {
+    color: #fff;
+}
+
+.title-intro-path a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.title-intro-path span {
+    color: var(--bg-color);
+}
+
+.intro-content {
+    padding: 30px 0;
+}
+
+.intro-content p:first-child {
+    text-indent: 20px;
+}
+
+// style footer
 footer {
     width: 100%;
-    height: 500px;
+    background: #00BCD4;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+footer p{
+    margin: 0;
+    color: #fff;
 }
 
 @media (max-width: 739.9px) {
-    .item-big, .cartsearch {
+    .item-big,
+    .cartsearch {
         display: none;
     }
     .banner img {
         height: 250px;
     }
-    .logo{
+    .logo {
         text-align: center;
     }
     .services-tab {
