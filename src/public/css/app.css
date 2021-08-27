@@ -63,7 +63,7 @@
 .navbars ul {
   padding: 0;
   margin: 0;
-  font-family: "Montserrat", sans-serif; }
+  font-family: 'Montserrat', sans-serif; }
 
 .item-big {
   width: 100%;
@@ -222,7 +222,7 @@
   background-position: right;
   background-attachment: fixed;
   padding: 50px 0;
-  background-image: url("../../images/bg-bottom-right.png"); }
+  background-image: url("../img/bg-bottom-right.png"); }
 
 .bg-department-item {
   position: absolute;
@@ -506,28 +506,22 @@
 .box-product-search i {
   font-size: 25px; }
 
-.box-product-showroom {
-  margin: 20px 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between; }
-
 .product-item {
-  /* background-color: #444; */ }
+  margin-bottom: 50px; }
 
-.product-item:hover img {
-  transform: scale(1.2); }
+.product-item .card {
+  transition: 0.3s; }
 
-.product-img {
-  padding: 10px;
-  position: relative;
-  width: 265px;
-  height: 300px; }
+.product-item .card:hover {
+  box-shadow: 1px 1px 20px #b7aaaa; }
 
-.product-img img {
-  width: 265px;
-  position: absolute;
-  margin: auto; }
+.product-item .card-body {
+  border-top: 1px dashed #b7b7b7;
+  background-color: #d0e1e8;
+  text-align: center; }
+
+.product-item .pproduct-price {
+  color: red; }
 
 .title-intro {
   background-image: url(/img/bg_bread_crumb.jpg);
@@ -551,7 +545,7 @@
 
 footer {
   width: 100%;
-  background: #00BCD4;
+  background: #00bcd4;
   height: 60px;
   display: flex;
   align-items: center;
@@ -560,6 +554,42 @@ footer {
 footer p {
   margin: 0;
   color: #fff; }
+
+.sanphamhienthi {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center; }
+
+.sanphamhienthi .card-img-top {
+  width: 50%; }
+
+.card-body {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  grid-row-gap: 1.2rem; }
+
+.card-body p.card-price {
+  color: red;
+  font-size: 22px;
+  font-weight: 600; }
+
+.alert-dark {
+  background: #E9ECEF; }
+
+.ads-product img {
+  margin-bottom: 1rem;
+  width: 100%; }
+
+.row.sanphamlienquan {
+  width: 100%;
+  margin: 1rem 0 0 0; }
+
+.tieude {
+  margin: 0 !important;
+  padding: 0; }
 
 @media (max-width: 739.9px) {
   .item-big,

@@ -1,15 +1,24 @@
+const Product = require('../models/Couser');
+const { mutipleMongooseToOject } = require('../../util/moongose');
+
 class SiteController {
-    
-    // Phương thức GET / News
-    index(req, res){
-        res.render('home');
-    }
-    intro(req, res){
-        res.render('intro');
-    }
-    error(req, res){
-        res.render('error');
-    }
+  index(req, res, next) {
+    Product.find({})
+      .then((Product) => {
+        res.render('home', {
+          title: 'Trang chủ | Medical Center',
+          Product: mutipleMongooseToOject(Product),
+        });
+      })
+      .catch(next);
+  }
+
+  intro(req, res) {
+    res.render('intro', { title: 'Giới thiệu | Medical Center' });
+  }
+  error(req, res) {
+    res.render('error', { title: '404 not found | Medical Center' });
+  }
 }
 
-module.exports = new SiteController;
+module.exports = new SiteController();

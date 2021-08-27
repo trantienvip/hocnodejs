@@ -1,0 +1,55 @@
+[{
+    "_id": {
+      "$oid": "61270b23de8befd184332ef7"
+    },
+    "content": "Khẩu trang vải dày 2 lớp: 1 Lớp Lacoste và 1 lớp Single ( có phiếu kiểm nghiệm)\nChống tia cực tím UV.\nSản xuất theo công nghệ Nhật Bản.\nKhả năng kháng khuẩn, hạn chế vi khuẩn.\nCản bụi và các hạt nhỏ bắn ra từ đường hô hấp của người đeo.\nTái sử dụng nhiều lần, tính năng kháng khuẩn lưu giữ tối ưu trong 30 lần giặt.\nMềm mịn, vừa vặn.\nKhông gây bí, khó thở.\nKhẩu trang kháng khuẩn không gây kích ứng da. ",
+    "image": "product002.jpg",
+    "name": "Khẩu trang vải xuất khẩu",
+    "price": "100.000₫",
+    "slug": "khau-trang-vai-xuat-khau"
+  },{
+    "_id": {
+      "$oid": "61279f47bfaadb0429aef36e"
+    },
+    "content": "Kính gửi Quý khách hàng! Nhằm đảo bảo sức khỏe cho Quý khách và cộng đồng trong đại dịch Covid-19, Quý khách vui lòng không đến trực tiếp mua hàng . Chúng tôi sẽ Giao hàng và thu tiền tại nhà trên toàn quốc cho Quý khách. Với trên 13 năm kinh nghiệm bán hàng Online chúng tôi sẽ làm hài lòng Quý khách.ẩn không gây kích ứng da. ",
+    "image": "product005.jpg",
+    "name": "Máy xông mũi họng Omron",
+    "price": "1.130.000₫",
+    "slug": "may-xong-mui-hong-omron"
+  },{
+    "_id": {
+      "$oid": "61279f85bfaadb0429aef36f"
+    },
+    "content": "Kính gửi Quý khách hàng! Nhằm đảo bảo sức khỏe cho Quý khách và cộng đồng trong đại dịch Covid-19, Quý khách vui lòng không đến trực tiếp mua hàng. Chúng tôi sẽ Giao hàng và thu tiền tại nhà trên toàn quốc cho Quý khách. Với trên 13 năm kinh nghiệm bán hàng Online chúng tôi sẽ làm hài lòng Quý khách.",
+    "image": "product003.jpg",
+    "name": "Máy đo huyết áp cổ tay Đức",
+    "price": "800.000₫",
+    "slug": "may-do-huyet-ap-co-tay-duc"
+  },{
+    "_id": {
+      "$oid": "61279fd9bfaadb0429aef370"
+    },
+    "content": "Nhiệt kế hồng ngoại đo trán Beurer FT100 đo nhiệt độ mà không cần tiếp xúc với vật cần đo, chỉ cần để nhiệt kế cách vật cần đo nhiệt độ một khoảng 4cm - 6cm, bấm nút đo, sau vài giây có tín hiệu báo, ta được kết quả đo nhiệt độ chính xác.",
+    "image": "product006.jpg",
+    "name": "Nhiệt kế hồng ngoại đo trán",
+    "price": "320.000₫",
+    "slug": "nhiet-ke-hong-ngoai-do-tran"
+  },{
+    "_id": {
+      "$oid": "6127a0a5bfaadb0429aef371"
+    },
+    "content": "Kính gửi Quý khách hàng! Nhằm đảo bảo sức khỏe cho Quý khách và cộng đồng trong đại dịch Covid-19, Quý khách vui lòng không đến trực tiếp mua hàng. Với trên 13 năm kinh nghiệm bán hàng Online chúng tôi sẽ làm hài lòng Quý khách.",
+    "image": "product004.jpg",
+    "name": "Cồn rửa tay khô",
+    "price": "99.000₫ ",
+    "slug": "con-rua-tay-kho"
+  },{
+    "_id": {
+      "$oid": "6127a0fbbfaadb0429aef372"
+    },
+    "content": "Kính gửi Quý khách hàng! Nhằm đảo bảo sức khỏe cho Quý khách và cộng đồng trong đại dịch Covid-19, Quý khách vui lòng không đến trực tiếp mua hàng . Chúng tôi sẽ Giao hàng và thu tiền tại nhà trên toàn quốc cho Quý khách. Với trên 13 năm kinh nghiệm bán hàng Online chúng tôi sẽ làm hài lòng Quý khách.ẩn không gây kích ứng da. ",
+    "image": "product001.jpg",
+    "name": "Máy xông mũi",
+    "price": "1.130.000₫",
+    "slug": "may-xong-mui"
+  }]
