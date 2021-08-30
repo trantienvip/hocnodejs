@@ -5,5 +5,4 @@ module.exports = {
   MongooseToOject: function (mongooses) {
     return mongooses ? mongooses.toObject() : mongooses;
   },
-
 };

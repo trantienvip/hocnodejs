@@ -1,0 +1,48 @@
+<main>
+  <div class='container mt-10 form-create-product'>
+    <div class='alert alert-dark' role='alert'>
+      <h4 class='tieude'>Chỉnh Sửa Sản Phẩm</h4>
+    </div>
+    <form method='POST' action='/product/{{product._id}}?_method=PUT'>
+      <div class='form-group'>
+        <label for='exampleInputEmail1'>Tên sản Phẩm: </label>
+        <input
+          type='text'
+          class='form-control'
+          name='name'
+          value='{{product.name}}'
+          placeholder='Nhập tên sản phẩm ... '
+        />
+      </div>
+      <div class='form-group'>
+        <label for='exampleInputEmail1'>Đơn giá: </label>
+        <input
+          type='text'
+          class='form-control'
+          name='price'
+          value='{{product.price}}'
+          placeholder='Nhập tên Đơn giá ... '
+        />
+      </div>
+      <div class='form-group'>
+        <label for='exampleInputEmail1'>Video ID: </label>
+        <input
+          type='text'
+          class='form-control'
+          name='videoID'
+          value='{{product.videoID}}'
+          placeholder='Nhập tên Hình ảnh ... '
+        />
+      </div>
+      <div class='form-group'>
+        <label for='exampleInputEmail1'>Mô tả: </label>
+        <textarea
+          class='form-control'
+          name='content'
+          placeholder='Nhập tên Mô tả ... '
+        >{{product.content}}</textarea>
+      </div>
+      <button type='submit' class='btn btn-primary'>Update</button>
+    </form>
+  </div>
+</main>

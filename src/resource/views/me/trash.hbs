@@ -1,0 +1,101 @@
+<main>
+    <div class="container">
+        <table class="table">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Trang Chủ</a></li>
+                <li class="breadcrumb-item"><a href="/me">Sản Phẩm</a></li>
+                <li class="breadcrumb-item"><a href="/me/trash">Thùng rác</a></li>
+            </ol>
+        </nav>
+        <div class="title-me">
+          <h3>Thùng rác <sub>{{deleteCount}}</sub></h3>
+          <a href="/me">Quay lại<i class="fas fa-angle-right"></i></a>
+        </div>
+        <thead class="thead-dark">
+            <tr>
+            <th scope="col">STT</th>
+            <th scope="col">Tên Sản Phẩm</th>
+            <th scope="col">Đơn Giá</th>
+            <th scope="col">VideoID</th>
+            <th colspan="2">Thời gian xóa</th>
+            <th colspan="2">Hành Động</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each Product}}
+            <tr>
+                <td>{{sum @index 1}}</td>
+                <td>{{this.name}}</td>
+                <td>{{this.price}}</td>
+                <td>{{this.videoID}}</td>
+                <td>{{this.deletedAt}}</td>
+                <td>
+                    <a href="" class="btn btn-success btn-restore" data-id="{{this._id}}">Khôi phục</a>
+                </td>
+                <td>
+                    <a href="/" class="btn btn-danger" data-toggle="modal" data-id="{{this._id}}" data-target="#deleteProduct">Xóa vĩnh viễn</a>
+                </td>
+            <tr>
+              {{else}}
+              <tr>
+                <td style="text-align: center;" colspan="6">Thùng rác trống!</td>
+              </tr>
+            {{/each}}
+        </tbody>
+        </table>
+    </div>
+    {{!-- // comfim delete product --}}
+<!-- Modal -->
+<div id="deleteProduct" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Thông Báo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Hành động này không thể khôi phục. <br> Bạn có muốn xóa vĩnh viễn sản phẩm này không ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="bnt-delete-product" class="btn btn-danger">Xác nhận</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- from delete, restore --}}
+<form name="delete-product-form" method="POST"></form>
+<form name="restore-product-form" method="POST"></form>
+
+</main>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var productID;
+    var deleteFrom = document.forms['delete-product-form'];
+    var restoreFrom = document.forms['restore-product-form'];
+    var bntDeleteProduct = document.getElementById('bnt-delete-product');
+    var btnRestore = $('.btn-restore');
+
+    $('#deleteProduct').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget); // Button that triggered the modal
+      productID = button.data('id');
+    });
+    bntDeleteProduct.onclick = function() {
+      deleteFrom.action = '/product/' + productID + '/force?_method=DELETE';
+      deleteFrom.submit();
+    }
+
+    btnRestore.click(function (e){
+      e.preventDefault();
+      var idRestore = $(this).data('id');
+      restoreFrom.action = '/product/' + idRestore + '/restore?_method=PATCH';
+      restoreFrom.submit();
+    })
+  });
+  
+    
+</script>
