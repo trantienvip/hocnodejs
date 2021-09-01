@@ -26,14 +26,18 @@
       </select>
       <button class="btn btn-primary btn-sm checkallBtn disabled">Thực hiện</button>
     </div>
-
+    
     <table class="table">
       <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
           <th scope="col">STT</th>
-          <th scope="col">Tên Sản Phẩm</th>
-          <th scope="col">Đơn Giá</th>
+          <th scope="col">Tên Sản Phẩm
+            {{{sortable 'name' _sort}}}
+          </th>
+          <th scope="col">Đơn Giá 
+            {{{sortable 'price' _sort}}}
+          </th>
           <th scope="col">VideoID</th>
           <th colspan="2">Hành Động</th>
         </tr>

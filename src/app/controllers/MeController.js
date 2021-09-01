@@ -3,7 +3,15 @@ const { mutipleMongooseToOject } = require('../../util/moongose');
 
 class ProductsController {
   me(req, res, next) {
-    Promise.all([Product.find({}), Product.countDocumentsDeleted()])
+    let productQuery = Product.find({});
+
+    if(req.query.hasOwnProperty('_sort')){
+      productQuery = productQuery.sort({
+        [req.query.column]: req.query.type,
+      });
+    }
+
+    Promise.all([productQuery, Product.countDocumentsDeleted()])
       .then(([Product, deleteCount]) =>{
         res.render('me/me', {
           title: 'Danh sách sản phẩm | Medical Center',
