@@ -1,101 +1,150 @@
 <main>
-    <div class="container">
-        <table class="table">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Trang Chủ</a></li>
-                <li class="breadcrumb-item"><a href="/me">Sản Phẩm</a></li>
-                <li class="breadcrumb-item"><a href="/me/trash">Thùng rác</a></li>
-            </ol>
-        </nav>
-        <div class="title-me">
-          <h3>Thùng rác <sub>{{deleteCount}}</sub></h3>
-          <a href="/me">Quay lại<i class="fas fa-angle-right"></i></a>
+  <form class="container" method="post" action="/product/product-handle-option">
+    <table class="table">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Trang Chủ</a></li>
+          <li class="breadcrumb-item"><a href="/me">Sản Phẩm</a></li>
+          <li class="breadcrumb-item"><a href="/me/trash">Thùng rác</a></li>
+        </ol>
+      </nav>
+      <div class="title-me">
+        <h3>Thùng rác <sub>{{deleteCount}}</sub></h3>
+        <a href="/me">Quay lại<i class="fas fa-angle-right"></i></a>
+      </div>
+
+      <div class="mt-4 mb-2 checkall">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="exampleRadios" id="checkbox-all" value="option1">
+          <label class="form-check-label" for="checkbox-all">
+            Chọn tất cả
+          </label>
         </div>
-        <thead class="thead-dark">
-            <tr>
-            <th scope="col">STT</th>
-            <th scope="col">Tên Sản Phẩm</th>
-            <th scope="col">Đơn Giá</th>
-            <th scope="col">VideoID</th>
-            <th colspan="2">Thời gian xóa</th>
-            <th colspan="2">Hành Động</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each Product}}
-            <tr>
-                <td>{{sum @index 1}}</td>
-                <td>{{this.name}}</td>
-                <td>{{this.price}}</td>
-                <td>{{this.videoID}}</td>
-                <td>{{this.deletedAt}}</td>
-                <td>
-                    <a href="" class="btn btn-success btn-restore" data-id="{{this._id}}">Khôi phục</a>
-                </td>
-                <td>
-                    <a href="/" class="btn btn-danger" data-toggle="modal" data-id="{{this._id}}" data-target="#deleteProduct">Xóa vĩnh viễn</a>
-                </td>
-            <tr>
-              {{else}}
-              <tr>
-                <td style="text-align: center;" colspan="6">Thùng rác trống!</td>
-              </tr>
-            {{/each}}
-        </tbody>
-        </table>
-    </div>
-    {{!-- // comfim delete product --}}
-<!-- Modal -->
-<div id="deleteProduct" class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Thông Báo</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <select class="custom-select my-1 mr-sm-2 form-control-sm" id="inlineFormCustomSelectPref" name="actionhbs"
+          required>
+          <option value="">Hành động</option>
+          <option value="restored">Khôi phục</option>
+          <option value="deleted-not-restored">Xóa vĩnh viễn</option>
+        </select>
+        <button class="btn btn-primary btn-sm checkallBtn disabled">Thực hiện</button>
       </div>
-      <div class="modal-body">
-        <p>Hành động này không thể khôi phục. <br> Bạn có muốn xóa vĩnh viễn sản phẩm này không ?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" id="bnt-delete-product" class="btn btn-danger">Xác nhận</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">STT</th>
+          <th scope="col">Tên Sản Phẩm</th>
+          <th scope="col">Giá</th>
+          <th scope="col">VideoID</th>
+          <th colspan="2">Thời gian xóa</th>
+          <th colspan="2">Hành Động</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each Product}}
+        <tr>
+          <td><input class="checkboxform" type="checkbox" name="Product_ids[]" value="{{this._id}}"></td>
+          <td>{{sum @index 1}}</td>
+          <td>{{this.name}}</td>
+          <td>{{this.price}}</td>
+          <td>{{this.videoID}}</td>
+          <td>{{this.deletedAt}}</td>
+          <td>
+            <a href="" class="btn btn-success btn-restore" data-id="{{this._id}}">Khôi phục</a>
+          </td>
+          <td>
+            <a href="/" class="btn btn-danger" data-toggle="modal" data-id="{{this._id}}"
+              data-target="#deleteProduct">Xóa vĩnh viễn</a>
+          </td>
+        <tr>
+          {{else}}
+        <tr>
+          <td style="text-align: center;" colspan="8">Thùng rác trống!</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </form>
+  {{!-- // comfim delete product --}}
+  <!-- Modal -->
+  <div id="deleteProduct" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Thông Báo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Hành động này không thể khôi phục. <br> Bạn có muốn xóa vĩnh viễn sản phẩm này không ?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="bnt-delete-product" class="btn btn-danger">Xác nhận</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-{{!-- from delete, restore --}}
-<form name="delete-product-form" method="POST"></form>
-<form name="restore-product-form" method="POST"></form>
+  {{!-- from delete, restore --}}
+  <form name="delete-product-form" method="POST"></form>
+  <form name="restore-product-form" method="POST"></form>
 
 </main>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
     var productID;
     var deleteFrom = document.forms['delete-product-form'];
     var restoreFrom = document.forms['restore-product-form'];
     var bntDeleteProduct = document.getElementById('bnt-delete-product');
     var btnRestore = $('.btn-restore');
+    var checkall = $('#checkbox-all');
+    var product_id_s = $('input[name="Product_ids[]"]');
 
     $('#deleteProduct').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget); // Button that triggered the modal
       productID = button.data('id');
     });
-    bntDeleteProduct.onclick = function() {
+    bntDeleteProduct.onclick = function () {
       deleteFrom.action = '/product/' + productID + '/force?_method=DELETE';
       deleteFrom.submit();
     }
 
-    btnRestore.click(function (e){
+    btnRestore.click(function (e) {
       e.preventDefault();
       var idRestore = $(this).data('id');
       restoreFrom.action = '/product/' + idRestore + '/restore?_method=PATCH';
       restoreFrom.submit();
     })
-  });
-  
+
+    checkall.change(function () {
+      var isCheckall = $(this).prop('checked');
+      product_id_s.prop('checked',isCheckall);
+      redercheckedBtn ();
+    });
     
+    product_id_s.change(function (){
+      var isCheckall = product_id_s.length === $('input[name="Product_ids[]"]:checked').length;
+      checkall.prop('checked',isCheckall);
+      redercheckedBtn ();
+    });
+
+
+    $('.checkallBtn').click(function (e) {
+      checkBtnSubmit = $(this).hasClass('disabled');
+      if(checkBtnSubmit){
+        e.preventDefault();
+      }
+    });
+    function redercheckedBtn (){
+      var checkCount = $('input[name="Product_ids[]"]:checked').length;
+      if(checkCount > 0){
+        $('.checkallBtn').removeClass('disabled');
+      }else{
+        $('.checkallBtn').addClass('disabled');
+      }
+    }
+  });
+
+
 </script>

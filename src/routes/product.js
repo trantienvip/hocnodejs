@@ -5,6 +5,7 @@ const ProductController = require('../app/controllers/ProductController');
 
 router.get('/create', ProductController.create);
 router.post('/store', ProductController.store);
+router.post('/product-handle-option',ProductController.handleOption);
 router.get('/:id/edit', ProductController.edit);
 router.put('/:id', ProductController.update);
 router.patch('/:id/restore', ProductController.restore);

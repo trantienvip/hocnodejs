@@ -1,90 +1,137 @@
 <main>
-    <div class="container">
-        <table class="table">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Trang Chủ</a></li>
-                <li class="breadcrumb-item"><a href="/">Sản Phẩm</a></li>
-                <li class="breadcrumb-item"><a href="/">Danh Sách Sản Phẩm</a></li>
-            </ol>
-        </nav>
-        <div class="title-me">
-          <h3>Tất cả sản phẩm</h3>
-          {{#if deleteCount}}
-          <a href="/me/trash"><i class="fas fa-trash"></i>({{deleteCount}})</a>
-          {{/if}}
-        </div>
-        <thead class="thead-dark">
-            <tr>
-            <th scope="col">STT</th>
-            <th scope="col">Tên Sản Phẩm</th>
-            <th scope="col">Đơn Giá</th>
-            <th scope="col">VideoID</th>
-            <th colspan="2">Hành Động</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each Product}}
-            <tr>
-                <td>{{sum @index 1}}</td>
-                <td>{{this.name}}</td>
-                <td>{{this.price}}</td>
-                <td>{{this.videoID}}</td>
-                <td>
-                    <a href="/product/{{this._id}}/edit" class="btn btn-success">Sửa</a>
-                </td>
-                <td>
-                    <a href="/" class="btn btn-danger" data-toggle="modal" data-id="{{this._id}}" data-target="#deleteProduct">Xóa</a>
-                </td>
-            <tr>
-              {{else}}
-              <tr>
-                <td style="text-align: center;" colspan="5">Chưa có sản phẩm nào! <a href="/product/create">Thêm ngay</a></td>
-              </tr>
-            {{/each}}
-        </tbody>
-        </table>
+  <form class="container" method="POST" action="/product/product-handle-option">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Trang Chủ</a></li>
+        <li class="breadcrumb-item"><a href="/">Sản Phẩm</a></li>
+        <li class="breadcrumb-item"><a href="/">Danh Sách Sản Phẩm</a></li>
+      </ol>
+    </nav>
+    <div class="title-me">
+      <h3>Tất cả sản phẩm</h3>
+      {{#if deleteCount}}
+      <a href="/me/trash"><i class="fas fa-trash"></i>({{deleteCount}})</a>
+      {{/if}}
     </div>
-    {{!-- // comfim delete product --}}
-<!-- Modal -->
-<div id="deleteProduct" class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Thông Báo</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+    <div class="mt-4 mb-2 checkall">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="exampleRadios" id="checkbox-all" value="option1">
+        <label class="form-check-label" for="checkbox-all">
+          Chọn tất cả
+        </label>
       </div>
-      <div class="modal-body">
-        <p>Bạn có muốn xóa sản phẩm này không ?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" id="bnt-delete-product" class="btn btn-danger">Xác nhận</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+      <select class="custom-select my-1 mr-sm-2 form-control-sm" id="inlineFormCustomSelectPref" name="actionhbs" required>
+        <option value="">Hành động</option>
+        <option value="deleted">Xóa</option>
+      </select>
+      <button class="btn btn-primary btn-sm checkallBtn disabled">Thực hiện</button>
+    </div>
+
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">STT</th>
+          <th scope="col">Tên Sản Phẩm</th>
+          <th scope="col">Đơn Giá</th>
+          <th scope="col">VideoID</th>
+          <th colspan="2">Hành Động</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each Product}}
+        <tr>
+          <td><input class="checkboxform" type="checkbox" name="Product_ids[]" value="{{this._id}}"></td>
+          <td>{{sum @index 1}}</td>
+          <td>{{this.name}}</td>
+          <td>{{this.price}}</td>
+          <td>{{this.videoID}}</td>
+          <td>
+            <a href="/product/{{this._id}}/edit" class="btn btn-success">Sửa</a>
+          </td>
+          <td>
+            <a href="/" class="btn btn-danger" data-toggle="modal" data-id="{{this._id}}"
+              data-target="#deleteProduct">Xóa</a>
+          </td>
+        <tr>
+          {{else}}
+        <tr>
+          <td style="text-align: center;" colspan="6">Chưa có sản phẩm nào! <a href="/product/create">Thêm ngay</a></td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </form>
+  {{!-- // comfim delete product --}}
+  <!-- Modal -->
+  <div id="deleteProduct" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Thông Báo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Bạn có muốn xóa sản phẩm này không ?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="bnt-delete-product" class="btn btn-danger">Xác nhận</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-{{!-- from delete --}}
-<form name="delete-product-form" method="POST"></form>
+  {{!-- from delete --}}
+  <form name="delete-product-form" method="POST"></form>
 </main>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
     var productID;
     var deleteFrom = document.forms['delete-product-form'];
     var bntDeleteProduct = document.getElementById('bnt-delete-product');
+    var checkall = $('#checkbox-all');
+    var product_id_s = $('input[name="Product_ids[]"]');
 
     $('#deleteProduct').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget); // Button that triggered the modal
       productID = button.data('id');
     });
-    bntDeleteProduct.onclick = function() {
+    bntDeleteProduct.onclick = function () {
       deleteFrom.action = '/product/' + productID + '?_method=DELETE';
       deleteFrom.submit();
     }
-  });
-  
     
+    checkall.change(function () {
+      var isCheckall = $(this).prop('checked');
+      product_id_s.prop('checked',isCheckall);
+      redercheckedBtn ();
+    });
+    
+    product_id_s.change(function (){
+      var isCheckall = product_id_s.length === $('input[name="Product_ids[]"]:checked').length;
+      checkall.prop('checked',isCheckall);
+      redercheckedBtn ();
+    });
+
+
+    $('.checkallBtn').click(function (e) {
+      checkBtnSubmit = $(this).hasClass('disabled');
+      if(checkBtnSubmit){
+        e.preventDefault();
+      }
+    });
+    function redercheckedBtn (){
+      var checkCount = $('input[name="Product_ids[]"]:checked').length;
+      if(checkCount > 0){
+        $('.checkallBtn').removeClass('disabled');
+      }else{
+        $('.checkallBtn').addClass('disabled');
+      }
+    }
+  });
+
+
 </script>

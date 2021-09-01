@@ -63,6 +63,28 @@ class ProductsController {
       .then(() => res.redirect('back'))
       .catch(next);
   }
+
+  handleOption(req, res, next){
+    switch(req.body.actionhbs){
+      case 'deleted':
+        Product.delete({ _id: req.body.Product_ids })
+          .then(() => res.redirect('back'))
+          .catch(next);
+      break;
+      case 'restored':
+        Product.restore({ _id: req.body.Product_ids })
+          .then(() => res.redirect('back'))
+          .catch(next);
+      break;
+      case 'deleted-not-restored':
+        Product.deleteMany({ _id: req.body.Product_ids })
+          .then(() => res.redirect('back'))
+          .catch(next);
+      break;
+      default:
+        res.json({message: 'action-hbs không hợp lệ'});
+    }
+  }
 }
 
 module.exports = new ProductsController();

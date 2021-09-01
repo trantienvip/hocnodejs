@@ -774,6 +774,14 @@ footer p {
     text-decoration: none;
     grid-column-gap: 2px; }
 
+.checkall {
+  display: flex;
+  align-items: center;
+  grid-column-gap: 5px; }
+
+#inlineFormCustomSelectPref {
+  width: 120px; }
+
 @media (max-width: 992px) {
   .navbars_pc {
     display: none; }
