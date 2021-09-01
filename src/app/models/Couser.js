@@ -8,7 +8,7 @@ const Product = new Schema(
     content: String,
     image: String,
     name: String,
-    price: String,
+    price: Number,
     videoID: String,
     slug: { type: String, slug: 'name', unique: true },
   },
